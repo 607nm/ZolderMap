@@ -1,0 +1,173 @@
+<html>
+
+<head>
+<title>iESC</title>
+<link rel="stylesheet" href="leaflet.css" />
+
+	<style type="text/css">
+    		p {
+		        size:12px;
+		        font-weight:bold;
+		  }
+    
+		#mapid { height: 180px; }
+	</style>
+
+</head>
+
+<body>
+	<div id="mapid" style="width: 1200px; height: 800px"></div>
+	
+	<script src="leaflet.js"></script> <!-- or use leaflet-src.js --!>
+	<script>
+
+		var luftbild = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+   			minZoom: 15,
+			maxZoom: 19,
+			    subdomains:['mt0','mt1','mt2','mt3']
+		});
+
+		var outside = L.layerGroup([
+			L.marker([50.99541, 5.26122]).bindPopup("Barbeque </br><a href=\"pictures/Brasseria.JPG\"><img src=pictures/Brasseria.JPG width=\"200\" height=\"150\"></img></a>"),
+		L.marker([50.98771, 5.25267])
+                        .bindPopup("Turn 1 </br><a href=\"pictures/Turn1(1).JPG\"><img src=pictures/Turn1(1).JPG width=\"200\" height=\"150\"></img></a>"),
+
+		L.marker([50.98759, 5.25224])
+                        .bindPopup("Turn 1 </br><a href=\"pictures/Turn1(2).JPG\"><img src=pictures/Turn1(2).JPG width=\"200\" height=\"150\"></img></a>"),
+
+		L.marker([50.98804, 5.25183])
+                        .bindPopup("Carpark </br><a href=\"pictures/CarPark(1).JPG\"><img src=pictures/CarPark(1).JPG width=\"200\" height=\"150\"></img></a>"),
+
+		L.marker([50.98769, 5.25185])
+                        .bindPopup("Carpark & Exit Pitlane </br><a href=\"pictures/CarPark(2).JPG\"><img src=pictures/CarPark(2).JPG width=\"200\" height=\"150\"></img></a>"),
+
+		L.marker([50.99036, 5.25663])
+                        .bindPopup("Turn 5 </br><a href=\"pictures/Turn5.JPG\"><img src=pictures/Turn5.JPG width=\"200\" height=\"150\"></img></a>"),
+		
+		L.marker([50.98866, 5.25591])
+                        .bindPopup("Ausblick von \"De Pits\" </br><a href=\"pictures/ViewFromDePits(2).JPG\"><img src=pictures/ViewFromDePits(2).JPG width=\"200\" height=\"150\"></img></a>"),
+
+		L.marker([50.98944, 5.25633])
+			.bindPopup("Safetycar/ Gas Station </br><a href=\"pictures/SafetyCarStation.JPG\"><img src=pictures/SafetyCarStation.JPG width=\"200\" height=\"150\"></img></a>"),
+
+               	L.marker([50.99373, 5.26636])
+			.bindPopup("Medical Center </br><a href=\"pictures/MedicalCenter.JPG\"><img src=pictures/MedicalCenter.JPG width=\"200\" height=\"150\"></img></a>"),
+
+		L.marker([50.995241, 5.2607])
+			.bindPopup("Bmx Track </br><a href=\"pictures/BmxTrack.JPG\"><img src=pictures/BmxTrack.JPG width=\"200\" height=\"150\"></img></a>"),
+
+		L.marker([50.9909, 5.25933])
+			.bindPopup("KO Chicane"),
+
+		L.marker([50.98863, 5.25587])
+                        .bindPopup("Ausblick von \"De Pits\" </br><a href=\"pictures/ViewFromDePits.JPG\"><img src=pictures/ViewFromDePits.JPG width=\"200\" height=\"150\"></img></a>"),
+
+                L.marker([50.98587, 5.25089])
+                        .bindPopup("Power at Carparc </br><a href=\"pictures/PowerCarPark.JPG\"><img src=pictures/PowerCarPark.JPG width=\"200\" height=\"150\"></img></a>"),
+	
+		L.marker([50.98738, 5.2502])
+                        .bindPopup("Track Entrance/Exit </br><a href=\"pictures/TrackExit(1).JPG\"><img src=pictures/TrackExit(1).JPG width=\"200\" height=\"150\"></img></a>"),
+   
+		L.marker([50.98944, 5.25597])
+                        .bindPopup("Ridley Tower </br><a href=\"pictures/RidleyTower.JPG\"><img src=pictures/RidleyTower.JPG width=\"200\" height=\"150\"></img></a>"),
+   
+		L.marker([50.99401, 5.26587])
+                        .bindPopup("Turn 12 </br><a href=\"pictures/Turn12.JPG\"><img src=pictures/Turn12.JPG width=\"200\" height=\"150\"></img></a>"),
+   
+                L.marker([50.98934, 5.25521])
+                        .bindPopup("QuickCharger </br><a href=\"pictures/QuickCharger.JPG\"><img src=pictures/QuickCharger.JPG width=\"200\" height=\"150\"></img></a>"),
+		L.polygon([[50.98788, 5.25232],[50.98813, 5.2529],[50.9882, 5.25282],[50.98796, 5.25224]],{color: '',fillColor: '#f03',fillOpacity: 0.5})
+			.bindPopup("24h-race charging area</br><a href=\"pictures/ChargingArea.JPG\"><img src=pictures/ChargingArea.JPG width=\"200\" height=\"150\"></img></a>")
+
+		]);
+
+		var insideBuildings = L.layerGroup([
+                        L.marker([50.98910, 5.25521])
+				.bindPopup("Race Control </br><a href=\"pictures/raceControl.JPG\"><img src=pictures/raceControl.JPG width=\"200\" height=\"150\"></img></a>"),
+                        L.marker([50.98797, 5.25239])
+                                .bindPopup("Congress Center </br><a href=\"pictures/CongressCenter(1).JPG\"><img src=pictures/CongressCenter(1).JPG width=\"200\" height=\"150\"></img></a>"),
+			L.marker([50.9889, 5.25484])
+                                .bindPopup("<a href=\"pictures/Box29.JPG\"><img src=pictures/Box29.JPG width=\"200\" height=\"150\"></img></a>")
+ 
+                ]);
+
+		var onTopOfBuildings = L.layerGroup([
+                        L.marker([50.98796, 5.25225])
+				.bindPopup("Roof of CongressCenter </br><a href=\"pictures/onTopOfCongressCenter(1).JPG\"><img src=pictures/onTopOfCongressCenter(1).JPG width=\"200\" height=\"150\"></img></a>"),
+			L.marker([50.98821, 5.25296])
+				.bindPopup("Roof of CongressCenter </br><a href=\"pictures/onTopOfCongressCenter(2).JPG\"><img src=pictures/onTopOfCongressCenter(2).JPG width=\"200\" height=\"150\"></img></a>")
+                ]);
+
+
+		
+
+		var mymap = L.map('mapid', {
+                        center: [50.99, 5.25],
+                        zoom: 15,
+                        layers: [luftbild, outside, insideBuildings, onTopOfBuildings]
+                });
+
+
+		
+
+               
+  
+
+		L.polygon([
+                    [50.99404, 5.25893],
+                    [50.99394, 5.25896],
+                    [50.99381, 5.25904],
+                    [50.99367, 5.25926],
+                    [50.99348, 5.25977],
+		    [50.99340, 5.26036],
+                    [50.99338, 5.26112],
+                    [50.99344, 5.26177],
+		    [50.99420, 5.26374],
+		    [50.99460, 5.26322],
+                    [50.99488, 5.26267],
+                    [50.99508, 5.26183],
+		    [50.99514, 5.26142]],
+		    {
+    			color: 'green',
+    			fillColor: '#00ff06',
+    			fillOpacity: 0.5
+		    }).addTo(mymap).bindPopup("Camping");;
+		
+		L.polygon([
+                    [50.98816, 5.25304],
+                    [50.98896, 5.25499],
+                    [50.98907, 5.25488],
+                    [50.98826, 5.25292]],
+                    {
+                        color: '',
+                        fillColor: '#f03',
+                        fillOpacity: 0.5
+                    }).addTo(mymap).bindPopup("pit");;
+
+
+		var popup = L.popup();
+
+		function onMapClick(e) {
+			popup
+				.setLatLng(e.latlng)
+				.setContent("You clicked the map at " + e.latlng.toString())
+				.openOn(mymap);
+		}
+
+		var overlayMaps = {
+			"Outside": outside,
+			"Inside buildings": insideBuildings,
+			"On top of buildings": onTopOfBuildings
+		};
+		var baseMaps = {
+		    "Luftbild": luftbild
+		};
+
+		L.control.layers(baseMaps, overlayMaps,{collapsed:false}).addTo(mymap);
+
+		mymap.on('click', onMapClick);
+		mymap.refresh();
+	</script>
+</body>
+
+</html>
