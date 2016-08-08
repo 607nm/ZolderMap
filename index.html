@@ -16,7 +16,7 @@
 </head>
 
 <body>
-	<div id="mapid" style="width: 1200px; height: 800px"></div>
+	<div id="mapid" style="width: 1100px; height: 800px"></div>
 	
 	<script src="leaflet.js"></script> <!-- or use leaflet-src.js --!>
 	<script>
@@ -79,7 +79,12 @@
                 L.marker([50.98934, 5.25521])
                         .bindPopup("QuickCharger </br><a href=\"pictures/QuickCharger.JPG\"><img src=pictures/QuickCharger.JPG width=\"200\" height=\"150\"></img></a>"),
 		L.polygon([[50.98788, 5.25232],[50.98813, 5.2529],[50.9882, 5.25282],[50.98796, 5.25224]],{color: '',fillColor: '#f03',fillOpacity: 0.5})
-			.bindPopup("24h-race charging area</br><a href=\"pictures/ChargingArea.JPG\"><img src=pictures/ChargingArea.JPG width=\"200\" height=\"150\"></img></a>")
+			.bindPopup("24h-race charging area</br><a href=\"pictures/ChargingArea.JPG\"><img src=pictures/ChargingArea.JPG width=\"200\" height=\"150\"></img></a>"),
+                L.polygon([[50.9895, 5.25577],[50.98984, 5.25654],[50.99022, 5.2572],[50.99034, 5.25708],[50.98966, 5.25559]],{color: '',fillColor: '#0000ff',fillOpacity: 0.5})
+                        .bindPopup("iLumen GreenVille"),
+		L.polygon([[50.98996, 5.25736],[50.99017, 5.25788],[50.99038, 5.25765],[50.99011, 5.25718]],{color: '',fillColor: '#0000ff',fillOpacity: 0.5})
+                        .bindPopup("Visitors EV Parking")
+
 
 		]);
 
